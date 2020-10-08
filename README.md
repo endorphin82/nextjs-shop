@@ -1,5 +1,16 @@
 Steps for run the web-application:
 
+
+1. Clone this repository
+
+```git clone https://github.com/endorphin82/nextjs-shop.git```
+
+2. Run in  docker 
+
+```npm run docker-compose:up```
+
+Or
+
 1. Clone this repository
 
 ```git clone https://github.com/endorphin82/nextjs-shop.git```
@@ -31,3 +42,4 @@ DATABASE_DIALECT="mysql"
 
 
 By default run on <http://localhost:3000/>
+
