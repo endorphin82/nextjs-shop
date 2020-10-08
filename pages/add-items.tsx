@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Router from 'next/router'
 import { MainLayout } from '../components/MainLayout'
 import { ShirtColorType } from '../components/__generated__/types'
 import { useCreateShirt } from '../components/shirt/mutations/__generated__/CreateShirt'
