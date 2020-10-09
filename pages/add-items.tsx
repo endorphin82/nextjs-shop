@@ -10,14 +10,14 @@ import { All_pantsDocument } from '../components/pants/queries/__generated__/All
 export default function AddItems() {
   const [valuesShirt, setValuesShirt] = useState<any>({
     name: '',
-    size: null,
+    size: 0,
     color: ShirtColorType.White
   })
   const [valuesPants, setValuesPants] = useState<any>({
     name: '',
     color: '',
-    W: null,
-    L: null
+    W: 0,
+    L: 0
   })
   const [colors, setColors] = useState([])
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function AddItems() {
       () => {
         setValuesShirt({
           name: '',
-          size: null,
+          size: 0,
           color: ShirtColorType.White
         })
       })
@@ -85,8 +85,8 @@ export default function AddItems() {
         setValuesPants({
           name: '',
           color: '',
-          W: null,
-          L: null
+          W: 0,
+          L: 0
         })
       })
   }
@@ -111,8 +111,9 @@ export default function AddItems() {
           <h4>Shirt</h4>
           <label>name</label>
           <input value={valuesShirt.name} type="text" name="name" onChange={handleChangeShirt} />
-          <label>size</label>
+          <label>size*</label>
           <input value={Number(valuesShirt.size)} type="number" name="size" onChange={handleChangeShirt} />
+          <label>color*</label>
           <select name="color" onChange={handleChangeShirt}>
             {colors.map(col =>
               <option key={col} value={col}>{col}</option>
@@ -124,11 +125,11 @@ export default function AddItems() {
           <h4>Pants</h4>
           <label>name</label>
           <input value={String(valuesPants.name)} type="text" name="name" onChange={handleChangePants} />
-          <label>color</label>
+          <label>color*</label>
           <input value={String(valuesPants.color)} type="text" name="color" onChange={handleChangePants} />
-          <label>W</label>
+          <label>W*</label>
           <input value={Number(valuesPants.W)} type="number" name="W" onChange={handleChangePants} />
-          <label>L</label>
+          <label>L*</label>
           <input value={Number(valuesPants.L)} type="number" name="L" onChange={handleChangePants} />
           {addPantsButton(variablesPants)}
         </div>
