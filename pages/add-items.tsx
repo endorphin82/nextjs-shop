@@ -8,8 +8,17 @@ import { All_pantsDocument } from '../components/pants/queries/__generated__/All
 
 
 export default function AddItems() {
-  const [valuesShirt, setValuesShirt] = useState<any>({})
-  const [valuesPants, setValuesPants] = useState<any>({})
+  const [valuesShirt, setValuesShirt] = useState<any>({
+    name: '',
+    size: null,
+    color: ShirtColorType.White
+  })
+  const [valuesPants, setValuesPants] = useState<any>({
+    name: '',
+    color: '',
+    W: null,
+    L: null
+  })
   const [colors, setColors] = useState([])
   useEffect(() => {
     setColors(Object.keys(ShirtColorType))
@@ -60,7 +69,11 @@ export default function AddItems() {
       variables: variablesShirt
     }).finally(
       () => {
-        setValuesShirt({})
+        setValuesShirt({
+          name: '',
+          size: null,
+          color: ShirtColorType.White
+        })
       })
   }
 
@@ -69,8 +82,28 @@ export default function AddItems() {
       variables: variablesPants
     }).finally(
       () => {
-        setValuesPants({})
+        setValuesPants({
+          name: '',
+          color: '',
+          W: null,
+          L: null
+        })
       })
+  }
+
+
+  const addPantsButton = (variablesPants) => {
+    console.log('variablesPants', variablesPants)
+    return variablesPants.color.length > 0 && variablesPants.W != 0 && variablesPants.L != 0 ?
+      <button onClick={linkClickSubmitHandlerPants}>Add</button> :
+      <button disabled>Add</button>
+  }
+
+  const addShirtButton = (variablesShirt) => {
+    console.log('variablesPants', variablesPants)
+    return variablesShirt.size != 0 && variablesShirt.color.length > 0 ?
+      <button onClick={linkClickSubmitHandlerShirt}>Add</button> :
+      <button disabled>Add</button>
   }
 
   return (
@@ -87,23 +120,19 @@ export default function AddItems() {
               <option key={col} value={col}>{col}</option>
             )}
           </select>
-          <button onClick={linkClickSubmitHandlerShirt}>Add
-          </button>
+          {addShirtButton(variablesShirt)}
         </div>
         <div className="add-item__pants">
           <h4>Pants</h4>
           <label>name</label>
-          <input value={valuesPants.name} type="text" name="name" onChange={handleChangePants} />
+          <input value={String(valuesPants.name)} type="text" name="name" onChange={handleChangePants} />
           <label>color</label>
-          <input value={valuesPants.color} type="text" name="color" onChange={handleChangePants} />
+          <input value={String(valuesPants.color)} type="text" name="color" onChange={handleChangePants} />
           <label>W</label>
           <input value={Number(valuesPants.W)} type="number" name="W" onChange={handleChangePants} />
           <label>L</label>
           <input value={Number(valuesPants.L)} type="number" name="L" onChange={handleChangePants} />
-
-          <button onClick={linkClickSubmitHandlerPants}>Add
-          </button>
-
+          {addPantsButton(variablesPants)}
         </div>
       </section>
     </MainLayout>
