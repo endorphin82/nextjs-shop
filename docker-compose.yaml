@@ -21,8 +21,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: bash -c "npm run build && npm run migration && npm start"
-
+    command: bash -c "npm run build && npm run migration && npm run start"
     restart: always
     ports:
       - '3000:3000'
