@@ -93,14 +93,12 @@ export default function AddItems() {
 
 
   const addPantsButton = (variablesPants) => {
-    console.log('variablesPants', variablesPants)
     return variablesPants.color.length > 0 && variablesPants.W != 0 && variablesPants.L != 0 ?
       <button onClick={linkClickSubmitHandlerPants}>Add</button> :
       <button disabled>Add</button>
   }
 
   const addShirtButton = (variablesShirt) => {
-    console.log('variablesPants', variablesPants)
     return variablesShirt.size != 0 && variablesShirt.color.length > 0 ?
       <button onClick={linkClickSubmitHandlerShirt}>Add</button> :
       <button disabled>Add</button>
