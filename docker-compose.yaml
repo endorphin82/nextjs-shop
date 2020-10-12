@@ -10,10 +10,17 @@ services:
       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
       MYSQL_USER: ${DATABASE_USER}
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
-    ports:
-      - '3306:3306'
+#    ports:
+#      - '3306:3306'
     volumes:
       - mysql_volume:/var/lib/mysql
+#  adminer:
+#    image: adminer
+#    restart: always
+#    links:
+#      - mysql_service:mysql_service
+#    ports:
+#      - '9000:8080'
   web_service:
     container_name: web_service
     depends_on:
@@ -21,7 +28,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: bash -c "npm run build && npm run migration && npm run start"
+    command: bash -c "npm run migration && npm run start"
     restart: always
     ports:
       - '3000:3000'

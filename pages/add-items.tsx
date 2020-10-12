@@ -32,6 +32,7 @@ export default function AddItems() {
       ]
     }
   )
+
   const [createPants] = useCreatePants(
     {
       refetchQueries: [
@@ -46,6 +47,7 @@ export default function AddItems() {
     const { name, value } = eS.target
     setValuesShirt({ ...valuesShirt, [name]: value })
   }
+
   const handleChangePants = (eP: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = eP.target
     setValuesPants({ ...valuesPants, [name]: value })
@@ -90,7 +92,6 @@ export default function AddItems() {
         })
       })
   }
-
 
   const addPantsButton = (variablesPants) => {
     return variablesPants.color.length > 0 && variablesPants.W != 0 && variablesPants.L != 0 ?
