@@ -13,7 +13,7 @@ COPY . .
 
 RUN npm run build
 #RUN rm -rf $(ls -I package.json -I .next -I config -I next.config.js -I schema.graphql -I .sequelizerc)
-RUN rm -rf components models pages public
+RUN rm -rf components models pages public gqlapi styles
 
 #RUN npm run build
 # Running the app
