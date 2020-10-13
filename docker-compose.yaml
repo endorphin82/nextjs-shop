@@ -25,9 +25,10 @@ services:
     container_name: web_service
     depends_on:
       - mysql_service
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: endorphin82/nextjs-shop_web_service:latest
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
     command: bash -c "npm run migration && npm run start"
     restart: always
     ports:
