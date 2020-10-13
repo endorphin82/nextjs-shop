@@ -46,5 +46,7 @@ services:
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_DIALECT: ${DATABASE_DIALECT}
+    env_file:
+      - .env
 volumes:
   mysql_volume:
